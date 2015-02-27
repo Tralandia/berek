@@ -6,7 +6,7 @@ Router.configure({
 });
 
 Router.route('/', {
-	layoutTemplate: 'layoutHome',
+	layoutTemplate: 'layout',
 	template: 'home',
 	onBeforeAction: function () {
 		this.next();

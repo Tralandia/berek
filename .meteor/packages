@@ -8,3 +8,4 @@ meteor-platform
 twbs:bootstrap
 jquery
 accounts-password
+iron:router
