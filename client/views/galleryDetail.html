@@ -1,0 +1,18 @@
+<template name="galleryDetail">
+	{{#with gallery}}
+	<h1 class="headline">{{name}}</h1>
+
+	<p>{{description}}</p>
+	<div id="gallery-1" class="gallery gallery-detail">
+		{{#each photos}}
+		<dl class="gallery-item">
+			<dt class="gallery-icon landscape">
+				<img src="{{url}}" class="attachment-thumbnail">
+				<div>{{description}}</div>
+			</dt>
+		</dl>
+		{{/each}}
+	</div>
+	{{/with}}
+	<div class="clear"></div>
+</template>
