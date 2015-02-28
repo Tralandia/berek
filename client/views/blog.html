@@ -1,0 +1,20 @@
+<template name="blog">
+	<h1>Aktuality</h1>
+
+	{{#each news}}
+	<div class="gallery-item row news">
+		<div class="col-lg-3 gallery-left">
+			<a href="/aktuality/{{_id}}">
+				<img src="{{mainPhoto}}" class="image-shadow"/>
+			</a>
+		</div>
+		<div class="col-lg-9 gallery-right">
+			<a href="/aktuality/{{_id}}">{{title}}</a>
+			<p>{{description}}</p>
+			<div>{{date}}</div>
+		</div>
+	</div>
+	{{/each}}
+
+	<div class="clear"></div>
+</template>

@@ -1,5 +1,6 @@
 Meteor.subscribe('Galleries'),
 Meteor.subscribe('Photos'),
+Meteor.subscribe('News'),
 
 Router.configure({
 	// loadingTemplate: 'loading',
@@ -30,6 +31,17 @@ Router.route('/fotografie', {
 	onBeforeAction: function () {
 		Session.set('currentPage', {
 			template: 'gallery',
+		});
+		this.next();
+	},
+});
+
+Router.route('/aktuality', {
+	layoutTemplate: 'layout',
+	template: 'blog',
+	onBeforeAction: function () {
+		Session.set('currentPage', {
+			template: 'blog',
 		});
 		this.next();
 	},

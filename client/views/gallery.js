@@ -5,8 +5,8 @@ Template.gallery.helpers({
 	galleries: function () {
 		return Galleries.find({}, {sort: {date: -1}});
 	},
-	mainPhoto: function () {
-		return Photos.findOne({gallery: this._id}, {sort: {order: 1}}).url;
+	photos: function () {
+		return Photos.find({gallery: this._id}, {sort: {order: 1}, limit: 2});
 	},
 });
 

@@ -1,16 +1,23 @@
 <template name="gallery">
-	<h1 class="headline">Fotogaléria</h1>
+	<h1>Fotogaléria</h1>
 
-	<p>This is an example of the WordPress gallery shortcode.</p>
-	<div id="gallery-1" class="gallery galleryid-200 gallery-columns-4 gallery-size-thumbnail">
-		{{#each galleries}}
-		<dl class="gallery-item">
-			<dt class="gallery-icon landscape">
-				<a href="/fotografie/{{_id}}"><img src="{{mainPhoto}}" class="attachment-thumbnail">{{name}}</a>
-			</dt>
-		</dl>
-		{{/each}}
+	<p>Zoznam našich fotogalérií.</p>
+	{{#each galleries}}
+	<div class="gallery-item row photos">
+		<div class="col-lg-6 gallery-left">
+			<a href="/fotografie/{{_id}}">
+				{{#each photos}}
+				<img src="{{url}}" class="image-shadow"/>
+				{{/each}}
+			</a>
+		</div>
+		<div class="col-lg-6 gallery-right">
+			<a href="/fotografie/{{_id}}">{{name}}</a>
+			<p>{{description}}</p>
+			<div>27. február 2015, 15 fotografií</div>
+		</div>
 	</div>
+	{{/each}}
 
 	<div class="clear"></div>
 </template>

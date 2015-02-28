@@ -88,7 +88,7 @@ a:after {
   border-color: #444;
 }
 form.signup {
-	margin-top: 30px;
+  text-align: center;
 }
 form.signup button.btn {
 	text-transform: uppercase;
@@ -96,6 +96,11 @@ form.signup button.btn {
 }
 form.signup input.form-control:focus {
 	border-color: #fd680e;
+}
+
+.form-inline .form-control {
+  width: 150px;
+  border: white;
 }
 
 
@@ -117,7 +122,7 @@ a.navbar-brand:hover {
 	background: url(/images/main-bg.jpg) no-repeat center top;
 	margin-top: -20px;
 	padding: 120px 0;
-	background-attachment: relative;
+	background-attachment: fixed;
 	background-position: center center;
 	min-height: 650px;
 	width: 100%;
@@ -138,9 +143,6 @@ a.navbar-brand:hover {
 
 #header .container {
   color: #fff;
-  font-size: 45px;
-  font-weight: 900;
-  letter-spacing: -1px;
   background: rgba(255, 255, 255, 0.9);
   padding: 30px;
   border-radius: 20px;
@@ -148,9 +150,12 @@ a.navbar-brand:hover {
 #header .container .image {
   width: 46%;
   border-radius: 10px;
-  box-shadow: 3px 3px 18px rgba(0, 0, 0, 0.5);
   margin-left: 30px;
   margin-bottom: 30px;
+}
+
+.image-shadow {
+  box-shadow: 3px 3px 18px rgba(0, 0, 0, 0.5);
 }
 
 #header h1 {
@@ -182,7 +187,8 @@ h2.subtitle {
 p.copyright {
 	color: #fff;
 	text-align: center;
-  font-weight: 500;
+  font-weight: 700;
+  float: left;
 }	
 
 p.copyright a {
@@ -193,6 +199,59 @@ p.copyright a:hover {
   text-decoration: underline;
 }
 
+.gallery-item {
+  margin-bottom: 20px;
+}
+
+.gallery-item .gallery-left {
+  
+}
+.gallery-item .gallery-left img {
+  width: 47%;
+  border-radius: 10px;
+  float: left;
+}
+.gallery-item.photos .gallery-left img:first-child {
+  margin-right: 3%;
+}
+.gallery-item .gallery-right {
+  padding-left: 5px;
+}
+.gallery-item.news .gallery-left img {
+  width: 100%;
+}
+
+.gallery-item .gallery-right a {
+  font-size: 150%;
+  font-weight: 500;
+  color: #879135;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  display: block;
+}
+.gallery-item .gallery-right p {
+  font-size: 15px;
+}
+
+.gallery-item .gallery-right div {
+  font-size: 15px;
+  color: #444;
+  font-style: italic;
+  margin-top: -10px;
+}
+
+.gallery-photo img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.gallery-photo div {
+  width: 100%;
+  text-align: center;
+  margin: 5px 0 30px 0;
+  color: #444;
+  line-height: 1.2;
+}
 
 
 

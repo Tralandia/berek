@@ -9,3 +9,5 @@ twbs:bootstrap
 jquery
 accounts-password
 iron:router
+momentjs:moment
+http
