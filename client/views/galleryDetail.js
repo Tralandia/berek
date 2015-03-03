@@ -6,16 +6,36 @@ Template.galleryDetail.helpers({
 		return Galleries.findOne(Session.get('currentPage').galleryId);
 	},
 	photos: function () {
-		return Photos.find({gallery: Session.get('currentPage').galleryId});
+		return Images.find({'metadata.gallery': this._id});
 	},
 });
 
 Template.galleryDetail.events({
-	'click .gallery-item div' : function(e, t){
-	    var t = prompt('Zadaj popis:', this.description);
+    'dropped h1': function(e, t) {
+        FS.Utility.eachFile(e, function(file) {
+            Images.insert(file, function (err, fileObj) {
+                if (!err) {
+                    Images.update(fileObj._id, {$set: {'metadata.gallery': Session.get('currentPage').galleryId, 'metadata.description': '----', 'metadata.order': (Images.find({'metadata.gallery': Session.get('currentPage').galleryId}).count()+1)}});
+                }
+            });
+        });
+    },
+	'click .gallery-photo div' : function(e, t){
+	    var t = prompt('Zadaj popis:', this.metadata.description);
 	    if (_.isString(t)) {
-
-	    	Photos.update(this._id, {$set: {description: t}});
+	    	Images.update(this._id, {$set: {'metadata.description': t}});
+	    }
+	},
+	'click h1' : function(e, t){
+	    var t = prompt('Zadaj nadpis:', this.name);
+	    if (_.isString(t)) {
+	    	Galleries.update(this._id, {$set: {name: t}});
+	    }
+	},
+	'click #galleryDescription' : function(e, t){
+	    var t = prompt('Popis:', this.description);
+	    if (_.isString(t)) {
+	    	Galleries.update(this._id, {$set: {description: t}});
 	    }
 	},
 });

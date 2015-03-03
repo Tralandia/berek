@@ -2,8 +2,8 @@ Meteor.publish("Galleries", function() {
 	return Galleries.find({});
 });
 
-Meteor.publish("Photos", function() {
-	return Photos.find({});
+Meteor.publish("Images", function() {
+	return Images.find({});
 });
 
 Meteor.publish("News", function() {

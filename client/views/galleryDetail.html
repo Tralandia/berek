@@ -1,12 +1,12 @@
 <template name="galleryDetail">
 	{{#with gallery}}
-	<h1>{{name}}</h1>
-
-	<p>{{description}}</p>
+	<a class="btn btn-theme pull-right" href="/fotografie">Späť na zoznam galérií</a>
+	<h1>{{name}} </h1>
+	<p id="galleryDescription">{{description}}</p>
 	<div class="col-lg-12 gallery-photo">
 		{{#each photos}}
-		<img src="{{url}}" class="image-shadow">
-		<div>{{description}}</div>
+		<img src="{{this.url}}" class="image-shadow">
+		<div>{{this.metadata.description}}</div>
 		{{/each}}
 	</div>
 	{{/with}}

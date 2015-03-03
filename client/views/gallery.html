@@ -1,18 +1,19 @@
 <template name="gallery">
+	{{#if isAdmin}}<button type="button" class="btn btn-theme pull-right" id="addGallery">Pridať galériu</button>{{/if}}
 	<h1>Fotogaléria</h1>
 
 	<p>Zoznam našich fotogalérií.</p>
 	{{#each galleries}}
 	<div class="gallery-item row photos">
 		<div class="col-lg-6 gallery-left">
-			<a href="/fotografie/{{_id}}">
+			<a href="/fotografie/{{slug}}">
 				{{#each photos}}
-				<img src="{{url}}" class="image-shadow"/>
+				<img src="{{this.url}}" class="image-shadow"/>
 				{{/each}}
 			</a>
 		</div>
 		<div class="col-lg-6 gallery-right">
-			<a href="/fotografie/{{_id}}">{{name}}</a>
+			<a href="/fotografie/{{slug}}">{{name}}</a>
 			<p>{{description}}</p>
 			<div>27. február 2015, 15 fotografií</div>
 		</div>

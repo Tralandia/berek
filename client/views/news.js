@@ -1,7 +1,7 @@
-Template.blog.rendered = function() {
+Template.news.rendered = function() {
 }
 
-Template.blog.helpers({
+Template.news.helpers({
 	news: function () {
 		return News.find({}, {sort: {date: -1}});
 	},
@@ -14,7 +14,7 @@ Template.blog.helpers({
 	},
 });
 
-Template.blog.events({
+Template.news.events({
 	// 'click .addItem' : function(e, t){
 	//     e.preventDefault();
 	// },

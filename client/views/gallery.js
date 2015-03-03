@@ -6,12 +6,15 @@ Template.gallery.helpers({
 		return Galleries.find({}, {sort: {date: -1}});
 	},
 	photos: function () {
-		return Photos.find({gallery: this._id}, {sort: {order: 1}, limit: 2});
+		return Images.find({'metadata.gallery': this._id}, {sort: {order: 1}, limit: 2});
 	},
 });
 
 Template.gallery.events({
-	// 'click .addItem' : function(e, t){
-	//     e.preventDefault();
-	// },
+	'click #addGallery' : function(e, t){
+	    var t = prompt('Zadaj nadpis:');
+	    if (_.isString(t)) {
+	    	Galleries.insert({name: t, date: new Date(), description: t});
+	    }
+	},
 })
