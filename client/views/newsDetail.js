@@ -3,7 +3,7 @@ Template.newsDetail.rendered = function() {
 
 Template.newsDetail.helpers({
 	news: function () {
-		return News.findOne({slug: Session.get('currentPage').newsId});
+		return News.findOne({slug: FlowRouter.getParam('newsId')});
 	},
 });
 

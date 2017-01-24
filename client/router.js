@@ -1,90 +1,57 @@
 moment.locale('sk');
 
-if (Meteor.isClient) {
-	if (/PhantomJS/.test(navigator.userAgent)) {
-		Router.configure({
-			loadingTemplate: 'loading',
-		});
-	} else {
-		Router.configure({
-			waitOn: function() {
-				return [
-					Meteor.subscribe('Galleries'),
-					Meteor.subscribe('Images'),
-					Meteor.subscribe('News'),
-				];
-			},
-			loadingTemplate: 'loading',
-		});
-	}
-}
+FlowRouter.subscriptions = function() {
+	this.register('Galleries', Meteor.subscribe('Galleries'));
+	this.register('Images', Meteor.subscribe('Images'));
+	this.register('News', Meteor.subscribe('News'));
+};
 
-Router.configure({
-	// loadingTemplate: 'loading',
+FlowRouter.triggers.enter([function(context, redirect) {
+    Session.set('Language', context.params.language || 'sk');
+    Meteor.setTimeout(function() {
+        document.title = $('h1').html() + ' - Lesná materská škôlka - Nové Zámky'
+    }, 0)
+}]);
+
+FlowRouter.route('/', {
+    action: function(params, queryParams) {     
+        BlazeLayout.render('layout', {mainContent: 'home'});
+    }
 });
 
-Router.route('/', {
-	layoutTemplate: 'layout',
-	template: 'home',
-	onBeforeAction: function () {
-		this.next();
-	},
+FlowRouter.route('/hu', {
+    action: function(params, queryParams) {		
+    	BlazeLayout.render('layout', {mainContent: 'home-hu'});
+    }
 });
 
-Router.route('/o-skolke', {
-	layoutTemplate: 'layout',
-	template: 'about',
-	onBeforeAction: function () {
-		Session.set('currentPage', {
-			template: 'about',
-		});
-		this.next();
-	},
+FlowRouter.route('/:language/fotografie', {
+    action: function(params, queryParams) {     
+        BlazeLayout.render('layout', {mainContent: 'gallery'});
+    }
 });
 
-Router.route('/fotografie', {
-	layoutTemplate: 'layout',
-	template: 'gallery',
-	onBeforeAction: function () {
-		Session.set('currentPage', {
-			template: 'gallery',
-		});
-		this.next();
-	},
+FlowRouter.route('/:language/fotografie/:galleryId', {
+    action: function(params, queryParams) {     
+        BlazeLayout.render('layout', {mainContent: 'galleryDetail'});
+    }
 });
 
-
-Router.route('/fotografie/:slug', {
-	layoutTemplate: 'layout',
-	template: 'galleryDetail',
-	onBeforeAction: function () {
-		Session.set('currentPage', {
-			template: 'galleryDetail',
-			galleryId: Galleries.findOne({slug: this.params.slug})._id,
-		});
-		this.next();
-	},
+FlowRouter.route('/:language/aktuality', {
+    action: function(params, queryParams) {     
+        BlazeLayout.render('layout', {mainContent: 'news'});
+    }
 });
 
-Router.route('/aktuality', {
-	layoutTemplate: 'layout',
-	template: 'news',
-	onBeforeAction: function () {
-		Session.set('currentPage', {
-			template: 'news',
-		});
-		this.next();
-	},
+FlowRouter.route('/:language/aktuality/:newsId', {
+    action: function(params, queryParams) {     
+        BlazeLayout.render('layout', {mainContent: 'newsDetail'});
+    }
 });
 
-Router.route('/aktuality/:_id', {
-	layoutTemplate: 'layout',
-	template: 'newsDetail',
-	onBeforeAction: function () {
-		Session.set('currentPage', {
-			template: 'newsDetail',
-			newsId: this.params._id,
-		});
-		this.next();
-	},
+FlowRouter.route('/:language/:textPage', {
+    action: function(params, queryParams) {		
+    	BlazeLayout.render('layout', {mainContent: 'TextPage'});
+    }
 });
+

@@ -3,7 +3,7 @@ Template.galleryDetail.rendered = function() {
 
 Template.galleryDetail.helpers({
 	gallery: function () {
-		return Galleries.findOne(Session.get('currentPage').galleryId);
+		return Galleries.findOne({slug: FlowRouter.getParam('galleryId')});
 	},
 	photos: function () {
 		return Images.find({'metadata.gallery': this._id});
@@ -12,10 +12,11 @@ Template.galleryDetail.helpers({
 
 Template.galleryDetail.events({
     'dropped h1': function(e, t) {
+    	var galleryId = Galleries.findOne({slug: FlowRouter.getParam('galleryId')})._id;
         FS.Utility.eachFile(e, function(file) {
             Images.insert(file, function (err, fileObj) {
                 if (!err) {
-                    Images.update(fileObj._id, {$set: {'metadata.gallery': Session.get('currentPage').galleryId, 'metadata.description': '----', 'metadata.order': (Images.find({'metadata.gallery': Session.get('currentPage').galleryId}).count()+1)}});
+                    Images.update(fileObj._id, {$set: {'metadata.gallery': galleryId, 'metadata.description': '----', 'metadata.order': (Images.find({'metadata.gallery': galleryId}).count()+1)}});
                 }
             });
         });

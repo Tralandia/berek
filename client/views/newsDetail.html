@@ -1,9 +1,12 @@
 <template name="newsDetail">
 	{{#with news}}
-	<h1>{{name}}  <a class="btn btn-theme" href="/aktuality">Späť na zoznam noviniek</a></h1>
+	<a class="btn btn-theme pull-right" href="/aktuality">Späť na zoznam aktualít</a>
+
+	<h1>{{name}}</h1>
 
 	<img src="{{photo}}" class="image-shadow pull-right image">
 	<p>{{description}}</p>
 	{{/with}}
+	<a class="btn btn-theme" href="/aktuality">Späť na zoznam aktualít</a>
 	<div class="clear"></div>
 </template>
