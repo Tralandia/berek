@@ -1,9 +1,9 @@
 /* ==== Google font ==== */
-@import url('http://fonts.googleapis.com/css?family=Lato:400,300,700,900');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
 
 body {
   background-color: #f2f2f2;
-    /*font-family: 'Lato', sans-serif;*/
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: 300;
     font-size: 16px;
     color: #555;
@@ -66,8 +66,13 @@ a:after {
     -o-transition: color 0.1s ease-in, background 0.1s ease-in;
     transition: color 0.1s ease-in, background 0.1s ease-in;
 }
+.navbar-inverse .navbar-nav {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+}
 .navbar-inverse .navbar-nav > li > a {
-    color: #c6d550;
+    color: #aaa;
+    background-color: #222;
 }
 
 .alignleft {
@@ -169,11 +174,18 @@ a.navbar-brand:hover {
 }
 
 .image-shadow {
-  box-shadow: 3px 3px 18px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 #header h1 {
-  margin: -5px 0px 30px 0px;
+  margin: -30px -30px 30px;
+  padding: 30px;
+  /*background: rgba(198, 213, 80, 0.80);*/
+  background-color: #fff;
+  border-bottom: 1px solid #c6d550;
+  color: #718000;
+  border-radius: 20px 20px 0 0;
+  text-align: center;
 }
 
 #header p {
@@ -191,7 +203,7 @@ h2.subtitle {
 
 /* footer */
 #footer {
-	background: #444;
+	background: #222;
 	padding: 20px 0 5px;
   bottom: 0px;
   width: 100%;
