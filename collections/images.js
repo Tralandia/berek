@@ -7,7 +7,7 @@ if (Meteor.isServer) {
 Images = new FS.Collection("images", {
 	stores: [
 		new FS.Store.FileSystem("images", {
-			mongoUrl: onProduction ? 'mongodb://localhost:27017/berek/' : 'mongodb://127.0.0.1:3001/meteor/',
+			mongoUrl: onProduction ? 'mongodb://localhost:27017/berek/' : 'mongodb://127.0.0.1:3009/meteor/',
 			path: onProduction ? '/var/www/berek/uploads' : '/meteor/berek/uploads',
 			transformWrite: function(fileObj, readStream, writeStream) {
 				gm(readStream).resize(1280, 960, '^').gravity('Center').crop(1280, 960, 0, 0).stream('JPG').pipe(writeStream);

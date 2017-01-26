@@ -6,7 +6,6 @@
 
 twbs:bootstrap
 jquery
-accounts-password
 momentjs:moment
 http
 fortawesome:fontawesome
@@ -33,3 +32,4 @@ check
 standard-minifier-css
 standard-minifier-js
 mrt:googlemaps
+meteorhacks:picker

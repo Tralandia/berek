@@ -8,6 +8,9 @@ Template.gallery.helpers({
 	photos: function () {
 		return Images.find({'metadata.gallery': this._id}, {sort: {order: 1}, limit: 2});
 	},
+	count: function () {
+		return Images.find({'metadata.gallery': this._id}).count();
+	},
 });
 
 Template.gallery.events({
