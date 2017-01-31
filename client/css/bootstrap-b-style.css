@@ -14,8 +14,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     /*font-family: 'Lato', sans-serif;*/
-    font-weight: 400;
-    color: #444;
+    font-weight: bold;
+    color: #718000;
 }
 
 h1 {
@@ -23,14 +23,15 @@ h1 {
 }
 h2 {
 	margin-top: 30px;
+  font-size: 27px;
 }
 
 h3 {
-	font-weight: 400;
+  margin-bottom: 5px;
+  font-size: 21px;
 }
 
 h4 {
-	font-weight: 400;
 	font-size: 20px;
 }
 
@@ -169,7 +170,7 @@ a.navbar-brand i.fa {
 
 #header .container {
   color: #fff;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.93);
   padding: 30px;
   border-radius: 20px;
 }
@@ -201,6 +202,7 @@ a.navbar-brand i.fa {
   color: #718000;
   border-radius: 20px 20px 0 0;
   text-align: center;
+  font-weight: normal;
 }
 
 #header p {
@@ -246,7 +248,7 @@ p.copyright a:hover {
   
 }
 .gallery-item .gallery-left img {
-  width: 47%;
+  width: 98%;
   border-radius: 10px;
   float: left;
 }
@@ -261,10 +263,10 @@ p.copyright a:hover {
 }
 
 .gallery-item .gallery-right a {
-  font-size: 150%;
-  font-weight: 500;
-  color: #879135;
-  margin-top: 4px;
+  font-size: 21px;
+  font-weight: bold;
+  color: #718000;
+  margin-top: 0px;
   margin-bottom: 4px;
   display: block;
 }

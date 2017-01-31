@@ -1,8 +1,6 @@
 <template name="gallery">
 	{{#if isAdmin}}<button type="button" class="btn btn-theme pull-right" id="addGallery">Pridať galériu</button>{{/if}}
 	<h1>Fotogaléria</h1>
-
-	<p>Zoznam našich fotogalérií.</p>
 	{{#each galleries}}
 	<div class="gallery-item row photos">
 		<div class="col-lg-6 gallery-left">

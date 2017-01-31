@@ -1,0 +1,29 @@
+
+===========================================================================================
+				PRODUCTION
+===========================================================================================
+
+
+cd /var/www/berek
+rm -rf bundle
+tar xfz berek.tar.gz -C /var/www/berek
+cd bundle/programs/server
+npm install
+cd ../../../
+forever stop berek
+truncate /var/www/.forever/berek.log --size 0
+PRODUCTION=1 METEOR_SETTINGS='{"private": {},"public" : {"ga": {"account":"UA-91162252-1"}}}' PORT=3016 ROOT_URL=http://www.berek.sk MONGO_URL=mongodb://192.168.4.62:27017/berek MONGO_OPLOG_URL=mongodb://192.168.4.62:27017/local LC_ALL="en_GB.UTF-8" forever -a --uid "berek" start bundle/main.js
+tail -f -n 1000 /var/www/.forever/berek.log
+
+
+
+===========================================================================================
+				PRODUCTION - SIMPLE RESTART
+===========================================================================================
+
+cd /var/www/berek
+forever stop berek
+PRODUCTION=1 METEOR_SETTINGS='{"private": {},"public" : {"ga": {"account":"UA-91162252-1"}}}' PORT=3016 ROOT_URL=http://www.berek.sk MONGO_URL=mongodb://192.168.4.62:27017/berek MONGO_OPLOG_URL=mongodb://192.168.4.62:27017/local LC_ALL="en_GB.UTF-8" forever -a --uid "berek" start bundle/main.js
+tail -f -n 200 /var/www/.forever/berek.log
+
+

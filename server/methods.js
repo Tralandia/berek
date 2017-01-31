@@ -1,6 +1,5 @@
 Meteor.methods({
 	'saveSsrPage': function(url, html) {
-		console.log(url, html)
 		SsrPages.upsert({url: url}, {$set: {
 			url: url,
 			html: html
@@ -28,7 +27,6 @@ Picker.route('/(.*)', function(params, req, res, next) {
 		next();
 	} else {
 		var thisUrl = req._parsedUrl.pathname;
-		console.log(thisUrl);
 
 		var cachedPage = SsrPages.findOne({url: thisUrl})
 		if (!cachedPage) {
@@ -37,7 +35,7 @@ Picker.route('/(.*)', function(params, req, res, next) {
 			});
 			res.end(); return false;
 		} else {
-			console.log('tu som, posielam', cachedPage.html.length)
+			console.log('SSR request', thisUrl, cachedPage.html.length + ' Bytes')
 			res.setHeader("Content-Type", "text/html");
 			res.end('<!DOCTYPE html>' + cachedPage.html);
 		}

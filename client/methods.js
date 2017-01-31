@@ -20,15 +20,14 @@ readSsrPages = function() {
 	]
 	_.each(allUrls, function(url) {
 		FlowRouter.go(url);
-        document.title = $('h1').html() + ' - Lesná materská škôlka - Nové Zámky'
+        document.title = $('h1').html() + ' - Lesná detská škôlka - Nové Zámky'
 		console.log('Idem na url:', url);
 		var html = $('html').html();
 
 		html = html.replace(/<.*?script.*?>.*?<\/.*?script.*?>/igm, '');
 		html = html.replace(/<script.*?>.*?<\/script>/igm, '');
 		html = html.replace('<meta name="fragment" content="!">', '');
-		// console.log('Html length:', html.length);
-		// console.log(document.title);
+
 		Meteor.call('saveSsrPage', url, html, function(error, result) {
 			console.log(error, result);
 		})
