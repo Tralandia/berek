@@ -7,6 +7,7 @@ FlowRouter.subscriptions = function() {
 };
 
 FlowRouter.triggers.enter([function(context, redirect) {
+    GAnalytics.pageview();
     Session.set('Language', context.params.language || 'sk');
     Meteor.setTimeout(function() {
         document.title = $('h1').html() + ' - Lesná detská škôlka - Nové Zámky'
