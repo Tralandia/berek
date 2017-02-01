@@ -3,14 +3,14 @@
 	<h1>Fotogaléria</h1>
 	{{#each galleries}}
 	<div class="gallery-item row photos">
-		<div class="col-lg-6 gallery-left">
+		<div class="col-lg-3 gallery-left">
 			<a href="/sk/fotografie/{{slug}}">
 				{{#each photos}}
 				<img src="{{this.url}}" class="image-shadow"/>
 				{{/each}}
 			</a>
 		</div>
-		<div class="col-lg-6 gallery-right">
+		<div class="col-lg-9 gallery-right">
 			<a href="/sk/fotografie/{{slug}}">{{name}}</a>
 			<p>{{description}}</p>
 			<div>{{d date}}, {{count}} fotografií</div>
