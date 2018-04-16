@@ -27,3 +27,29 @@ PRODUCTION=1 METEOR_SETTINGS='{"private": {},"public" : {"ga": {"account":"UA-91
 tail -f -n 200 /var/www/.forever/berek.log
 
 
+
+
+===========================================================================================
+				DUMP ALL excluding some...
+===========================================================================================
+ssh www-data@meteor.soft1.sk
+cd /var/www/uns-admin
+rm -rf dump/uns
+mkdir dump/uns
+mongodump --host 192.168.4.62:27017 --db berek
+tar -zcvf berek-dump.tar.gz dump/berek
+mv berek-dump.tar.gz /var/www/uns/uploads/berek-dump.tar.gz
+tput bel
+exit
+
+=====================
+
+rm -f /meteor/.dump/berek-dump.tar.gz
+rm -rf /meteor/.dump/dump
+cd /meteor/.dump
+curl -O "http://img.uns.sk/berek-dump.tar.gz"
+tar xfz berek-dump.tar.gz -C /meteor/.dump
+cd /meteor/.dump/dump
+mongorestore --host 127.0.0.1:27017 --db berek --drop berek
+tput bel
+
